@@ -10,7 +10,7 @@ source:
   sha256: 32d0c6c2e6bc3dc237a4eabcdebadd27b3ebd16a1290c03f762d02e0af5d889f
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}"'
   skip: True  # [win]
 
@@ -30,6 +30,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - llvm-openmp  # [osx]
     - wurlitzer
+    - future
 
 test:
   imports:
