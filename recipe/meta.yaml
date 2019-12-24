@@ -1,5 +1,5 @@
 {% set name = "Corrfunc" %}
-{% set version = "2.3.1" %}
+{% set version = "2.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 32d0c6c2e6bc3dc237a4eabcdebadd27b3ebd16a1290c03f762d02e0af5d889f
+  sha256: beaa3f96316f5fca94ddfe7052bd860c0170057b73d43a575e00cbd103bd1036
 
 build:
-  number: 1
+  number: 0
   script: '{{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}"'
   skip: True  # [win]
 
