@@ -23,7 +23,7 @@ requirements:
     - pip
     - numpy
     - libcblas
-    - gsl >=2.4
+    - gsl
     - llvm-openmp  # [osx]
   run:
     - python
