@@ -10,7 +10,7 @@ source:
   sha256: 158d0082412a2b13736805e761d3083f752640ba52cf71f06dd81be8b57e11bc
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}"'
   skip: True  # [win]
 
