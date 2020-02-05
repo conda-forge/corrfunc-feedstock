@@ -9,7 +9,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 gsl:
-- '2.5'
+- '2.6'
 libcblas:
 - 3.8 *netlib
 macos_machine:
