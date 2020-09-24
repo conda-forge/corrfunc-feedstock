@@ -18,17 +18,17 @@ requirements:
   build:
     - {{ compiler('c') }}
     - make >=3.80
+    - llvm-openmp  # [osx]
+    - libgomp      # [linux]    
   host:
     - python
     - pip
     - numpy
     - libcblas
     - gsl
-    - llvm-openmp  # [osx]
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - llvm-openmp  # [osx]
     - wurlitzer
     - future
 
