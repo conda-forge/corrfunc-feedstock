@@ -1,0 +1,11 @@
+--- a/common.mk
++++ b/common.mk
+@@ -329,7 +329,7 @@
+     endif # CC is clang
+
+     CFLAGS += -funroll-loops
+-    CFLAGS += -march=native -fno-strict-aliasing
++    CFLAGS += -fno-strict-aliasing
+     CFLAGS += -Wformat=2  -Wpacked  -Wnested-externs -Wpointer-arith  -Wredundant-decls  -Wfloat-equal -Wcast-qual
+     CFLAGS +=  -Wcast-align -Wmissing-declarations -Wmissing-prototypes  -Wnested-externs -Wstrict-prototypes  #-D_POSIX_C_SOURCE=2 -Wpadded -Wconversion
+     CFLAGS += -Wno-unused-local-typedefs ## to suppress the unused typedef warning for the compile time assert for sizeof(struct config_options)
