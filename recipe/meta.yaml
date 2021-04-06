@@ -8,10 +8,12 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b078d898eea7158ddfa8f9b908fcedcbce5d09f3f240da227f64c9337b48e850
+  patches:
+    - 00000_nonative_common.mk.patch
 
 build:
   number: 2
-  script: {{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}" --install-option="CFLAGS=${CFLAGS}"
+  script: {{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}"
   skip: true  # [win]
 
 requirements:
