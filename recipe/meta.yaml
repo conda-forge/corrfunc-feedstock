@@ -11,7 +11,7 @@ source:
 
 build:
   number: 2
-  script: {{ PYTHON }} -m pip install . -vv --install-option="CC=${CC} CFLAGS=${CFLAGS}"
+  script: {{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}" --install-option="CFLAGS=${CFLAGS}"
   skip: true  # [win]
 
 requirements:
@@ -19,7 +19,7 @@ requirements:
     - {{ compiler('c') }}
     - make >=3.80
     - llvm-openmp  # [osx]
-    - libgomp      # [linux]    
+    - libgomp      # [linux]
   host:
     - python
     - pip
