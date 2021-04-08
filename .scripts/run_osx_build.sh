@@ -2,17 +2,21 @@
 
 source .scripts/logging_utils.sh
 
-set -x
+set -xe
 
-startgroup "Installing a fresh version of Miniforge"
+( startgroup "Installing a fresh version of Miniforge" ) 2> /dev/null
+
 MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download"
 MINIFORGE_FILE="Miniforge3-MacOSX-x86_64.sh"
 curl -L -O "${MINIFORGE_URL}/${MINIFORGE_FILE}"
 bash $MINIFORGE_FILE -b
-endgroup "Installing a fresh version of Miniforge"
 
-startgroup "Configuring conda"
-BUILD_CMD=build
+( endgroup "Installing a fresh version of Miniforge" ) 2> /dev/null
+
+( startgroup "Configuring conda" ) 2> /dev/null
+
+GET_BOA=boa
+BUILD_CMD=mambabuild
 
 source ${HOME}/miniforge3/etc/profile.d/conda.sh
 conda activate base
@@ -34,22 +38,18 @@ echo -e "\n\nRunning the build setup script."
 source run_conda_forge_build_setup
 
 
-endgroup "Configuring conda"
 
-set -e
+( endgroup "Configuring conda" ) 2> /dev/null
 
-startgroup "Running conda $BUILD_CMD"
+
 echo -e "\n\nMaking the build clobber file"
 make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
 
 conda $BUILD_CMD ./recipe -m ./.ci_support/${CONFIG}.yaml --suppress-variables --clobber-file ./.ci_support/clobber_${CONFIG}.yaml ${EXTRA_CB_OPTIONS:-}
-endgroup "Running conda build"
-startgroup "Validating outputs"
-validate_recipe_outputs "${FEEDSTOCK_NAME}"
-endgroup "Validating outputs"
+( startgroup "Validating outputs" ) 2> /dev/null
 
-if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
-  startgroup "Uploading packages"
-  upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}" ./ ./recipe ./.ci_support/${CONFIG}.yaml
-  endgroup "Uploading packages"
-fi
+validate_recipe_outputs "${FEEDSTOCK_NAME}"
+
+( endgroup "Validating outputs" ) 2> /dev/null
+# we're building with mambabuild, so fail here and DO NOT UPLOAD packages
+exit 1
