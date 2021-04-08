@@ -1,0 +1,17 @@
+--- a/common.mk
++++ b/common.mk
+@@ -524,6 +524,14 @@
+     BLAS_LINK:=
+   endif
+
++	GRIDLINK_CFLAGS:=$(CFLAGS)
++	ifneq ($(CONDA_BUILD),)
++	  $(warning Building with conda-build, disabling arch-specific codes for gridlink files)
++	  $(warning Before removing "-march=native", GRIDLINK_CFLAGS = "[$(GRIDLINK_CFLAGS)]")
++	  GRIDLINK_CFLAGS:=$(filter-out -march=native,$(GRIDLINK_CFLAGS))
++	  $(warning After removing "-march=native", GRIDLINK_CFLAGS = "[$(GRIDLINK_CFLAGS)]")
++	endif
++
+   ## Everything is checked and ready. Print out the variables.
+   export MAKEFILE_VARS_PRINTED ?= 0
+   ifeq ($(MAKEFILE_VARS_PRINTED), 0)
