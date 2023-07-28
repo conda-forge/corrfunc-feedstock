@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --global-option="CC=${CC}"
+  script: {{ PYTHON }} -m pip install . -vv -C--global-option="CC=${CC}"
   skip: true  # [win]
 
 requirements:
