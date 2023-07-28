@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --install-option="CC=${CC}"
+  script: {{ PYTHON }} -m pip install . -vv --config-setting="CC=${CC}"
   skip: true  # [win]
 
 requirements:
