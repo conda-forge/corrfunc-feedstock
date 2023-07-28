@@ -1,11 +1,23 @@
 --- a/common.mk
 +++ b/common.mk
-@@ -329,7 +329,7 @@
-     endif # CC is clang
-
-     CFLAGS += -funroll-loops
--    CFLAGS += -march=native -fno-strict-aliasing
-+    CFLAGS += -fno-strict-aliasing
-     CFLAGS += -Wformat=2  -Wpacked  -Wnested-externs -Wpointer-arith  -Wredundant-decls  -Wfloat-equal -Wcast-qual
-     CFLAGS +=  -Wcast-align -Wmissing-declarations -Wmissing-prototypes  -Wnested-externs -Wstrict-prototypes  #-D_POSIX_C_SOURCE=2 -Wpadded -Wconversion
-     CFLAGS += -Wno-unused-local-typedefs ## to suppress the unused typedef warning for the compile time assert for sizeof(struct config_options)
+@@ -410,13 +410,13 @@
+ 
+   ## TLDR: Leave this variable as "opt" while the remaining are set to "copt". Otherwise,
+   ## the correct flags may not be picked up when using gcc on a ARM64 OSX machine
+-  opt := -march=native
+-  COMPILE_OPT_SUPPORTED := $(shell $(CC) $(opt) -dM -E - < /dev/null 2>&1 1>/dev/null)
+-  ifndef COMPILE_OPT_SUPPORTED
+-    CFLAGS += $(opt)
+-  else
+-    CFLAGS := $(filter-out $(opt), $(CFLAGS))
+-  endif
++  # opt := -march=native
++  # COMPILE_OPT_SUPPORTED := $(shell $(CC) $(opt) -dM -E - < /dev/null 2>&1 1>/dev/null)
++  # ifndef COMPILE_OPT_SUPPORTED
++  #   CFLAGS += $(opt)
++  # else
++  #   CFLAGS := $(filter-out $(opt), $(CFLAGS))
++  # endif
+ 
+   copt := -mcpu=apple-m1
+   COMPILE_OPT_SUPPORTED := $(shell $(CC) $(copt) -dM -E - < /dev/null 2>&1 1>/dev/null)
