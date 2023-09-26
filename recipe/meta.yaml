@@ -12,7 +12,7 @@ source:
     - 00000_nonative_common.mk.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --global-option="CC=${CC}"
   skip: true  # [win]
 
