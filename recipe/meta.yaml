@@ -1,5 +1,5 @@
 {% set name = "Corrfunc" %}
-{% set version = "2.5.1" %}
+{% set version = "2.5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1138a49e2c9be60bf8394cf4abbe2849c21e8ee02fca222e2eab5f2589d8a509
+  sha256: 191ad0bba852acc590e96cd8b866a3ddbb907b26e91b545318ec056be4e5415e
   patches:
     - 00000_nonative_common.mk.patch
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --global-option="CC=${CC}"
   skip: true  # [win]
 
