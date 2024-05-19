@@ -12,7 +12,7 @@ source:
     - 00000_nonative_common.mk.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --global-option="CC=${CC}"
   skip: true  # [win]
 
@@ -22,6 +22,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make >=3.80
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
@@ -33,7 +34,6 @@ requirements:
     - gsl
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - wurlitzer
     - future
 
