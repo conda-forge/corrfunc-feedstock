@@ -32,6 +32,7 @@ requirements:
     - numpy
     - libcblas
     - gsl
+    - setuptools
   run:
     - python
     - {{ pin_compatible('numpy') }}
