@@ -1,13 +1,13 @@
 {% set name = "Corrfunc" %}
-{% set version = "2.5.2" %}
+{% set version = "2.5.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 191ad0bba852acc590e96cd8b866a3ddbb907b26e91b545318ec056be4e5415e
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: 32836235e2389f55f028664231f0d6f5716ac0d4226c620c0bbac9407dc225a1
   patches:
     - 00000_nonative_common.mk.patch
 
@@ -22,6 +22,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make >=3.80
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
