@@ -29,12 +29,12 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     - numpy
     - libcblas
     - gsl
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - wurlitzer
     - future
 
