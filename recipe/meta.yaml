@@ -23,6 +23,7 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
+    - compilers  # testing hack to get a gcc symlink
     - make >=3.80
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
