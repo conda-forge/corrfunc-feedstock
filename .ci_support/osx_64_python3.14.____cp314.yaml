@@ -5,33 +5,33 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
 - '10.13'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 gsl:
 - '2.7'
 libcblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 llvm_openmp:
-- '18'
+- '19'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
-- '1.22'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.14.* *_cp314
 target_platform:
 - osx-64
 zip_keys:
 - - python
-  - numpy
+  - channel_sources
