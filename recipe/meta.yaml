@@ -12,11 +12,11 @@ source:
     - 00000_nonative_common.mk.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   script: 
     - ln -s ${CC} ${BUILD_PREFIX}/bin/gcc  # [linux]
-    - {{ PYTHON }} -m pip install . -vv --global-option="CC=${CC}"
+    - {{ PYTHON }} -m pip install . -vv --config-settings="--global-option='CC=${CC}'"
     - rm -f ${BUILD_PREFIX}/bin/gcc        # [linux]
 
 requirements:
